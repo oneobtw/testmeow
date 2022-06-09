@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+<!DOCTYPE html >
+{% load static %}
+<!-- START PAGE SOURCE -->
+{% block content %}
+<div class="main">
+    <div class="content">
+        <div class="content_resize">
+            <div class="mainbar">
+                {% for post in post_list %}
+                  <div class="article">
+                      <h2>{{post.title}}</h2>
+                      <div class="clr"></div>
+                      <p class="infopost"><a href="{% url 'post_detail' post.slug  %}" class="com">Комментариев {{post.comments.count}} &raquo;</a> <span class="date">{{ post.author }} | {{ post.created_on}}</span> </p>
+                      <p>{{post.content|safe|slice:":200" }}</p>
+                      <p class="spec"><a href="{% url 'post_detail' post.slug  %}" class="rm">Читать &raquo;</a></p>
+                  </div>
+                {% endfor %}
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<!-- END PAGE SOURCE -->
+</body>
+
+</html>

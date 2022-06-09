@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<!-- START PAGE SOURCE -->
+{% block content %}
+<div class="main">
+    <div class="content">
+        <div class="content_resize">
+            <div class="mainbar">
+                <div class="article">
+                    <h2>{{post.title}}</h2>
+                    <div class="clr"></div>
+                    <p>{{ post.author }} | {{ post.created_on }}</p>
+                    <p>{{post.content}}</p>
+                    <p><a href="#"><strong>Комментарии {{post.comments.count}}</strong></a></p>
+                </div>
+                <div class="article">
+                    <h2><span>{{post.comments.count}}</span> Комментриев</h2>
+                    <div class="clr"></div>
+                    {% for comment in comments %}
+                    <div class="comment">
+                        <p><a href="#">{{ comment.name }}</a> говорит: <br />
+                            {{ comment.created_on }}</p>
+                        <p>{{ comment.body | linebreaks }}</p>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                </div>
+                <div class="article">
+                    <h2>Оставить комментарий</h2>
+                    <div class="clr"></div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <ol>
+                            <li>
+                                <label for="name">Name</label>
+                                <input id="name" name="name" class="text" />
+                            </li>
+                            <li>
+                                <label for="email">Email Address</label>
+                                <input id="email" name="email" class="text" />
+                            </li>
+                            <li>
+                                <label for="body">Your Message</label>
+                                <textarea id="body" name="body" rows="8" cols="50"></textarea>
+                            </li>
+                            <li>
+                                <button type="submit">Submit</button>
+                                <div class="clr"></div>
+                            </li>
+                        </ol>
+                    </form>
+                </div>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<!-- END PAGE SOURCE -->
+</body>
+
+</html>

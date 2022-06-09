@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Блог на Джанго</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="{% static 'freewebdesign/style.css' %}" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="{% static 'freewebdesign/js/cufon-yui.js' %}"></script>
+    <script type="text/javascript" src="{% static 'freewebdesign/js/arial.js' %}"></script>
+    <script type="text/javascript" src="{% static 'freewebdesign/js/cuf_run.js' %}"></script>
+</head>
+
+<body>
+    <div class="header main">
+        <div class="header_resize">
+            <div class="logo">
+                <h1><a href="{% url 'home' %}">Блог о спорте</a></h1>
+            </div>
+            <div class="clr"></div>
+            <div class="menu_nav">
+                <ul>
+                    <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                </ul>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+    {% block content %}
+    <!-- Content Goes here -->
+    {% endblock content %}
+    <div class="footer">
+        <div class="footer_resize">
+            <p class="lf">Copyright &copy; <a href="#">Иван Егоров</a> oneobtw</p>
+            <div class="clr"></div>
+        </div>
+    </div>
+</body>
+
+</html>
